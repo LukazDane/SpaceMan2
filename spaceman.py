@@ -91,7 +91,56 @@ def spaceman(secret_word):
 
     # TODO: check if the game has been won or lost
 
+    letters_guessed = []
+    guess_limit = len(secret_word)
+    guess_number = 0
+
+    print("Welcome to the world of Spaceman!")
+    print("Take a chance, guess a letter, let's play a game...\n")
+
+    print("Guesses: " + str(guess_limit - guess_number))
+    print("_"*len(secret_word))
+
+    while True:
+        guess = input("Guess: ")
+        if is_valid(guess, letters_guessed):
+            letters_guessed.extend(guess)
+            guess_number += 1
+            if is_guess_in_word(guess, secret_word):
+                print("You got it! :)")
+            else:
+                print("X_X incorrect :(")
+        else:
+            print("Please try a valid input")
+
+        print("Guesses left: " + str(guess_limit - guess_number))
+        print(get_guessed_word(secret_word, letters_guessed))
+
+        if is_word_guessed(secret_word, letters_guessed):
+            print("You git it! The word was " + secret_word)
+            break
+        if guess_number >= guess_limit:
+            print(
+                "Looks like you need to go back to the trainer school... \nThe word was " + secret_word)
+            break
+
+
+def is_valid(guess, letters_guessed):
+    if guess.isalpha():
+        if len(guess) == 1:
+            if guess not in letters_guessed:
+                return True
+    return False
+
 
 # These function calls that will start the game
 secret_word = load_word()
 spaceman(secret_word)
+while True:
+    play_again = input("Would you like to play again? (yes, y): ")
+    play_again = play_again.lower()
+    if play_again == 'y' or play_again == 'yes':
+        secret_word = load_word()
+        spaceman(secret_word)
+    else:
+        break
