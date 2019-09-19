@@ -136,14 +136,14 @@ def is_valid(guess, letters_guessed):
 # These function calls that will start the game
 # secret_word = load_word()
 # spaceman(secret_word)
-# while True:
-#     play_again = input("Would you like to play again? (yes, y): ")
-#     play_again = play_again.lower()
-#     if play_again == 'y' or play_again == 'yes':
-#         secret_word = load_word()
-#         spaceman(secret_word)
-#     else:
-#         break
+    # while True:
+    #     play_again = input("Would you like to play again? (yes, y): ")
+    #     play_again = play_again.lower()
+    #     if play_again == 'y' or play_again == 'yes':
+    #         secret_word = load_word()
+    #         spaceman(secret_word)
+    #     else:
+    #         break
 
 if '__name__' == '__main__':
     running = True
